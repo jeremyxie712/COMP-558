@@ -4,6 +4,7 @@ readPositions
 xy = xy1;
 [P,K,R,C] = calibrate(XYZ,xy);
 numPositions = size(XYZ,1);
+aspRat = K(2,2) / K(1,1);
 
 
 %Image shift part%
@@ -100,13 +101,12 @@ Iname4 = 'first image changing K for scaling';
 
 scaMatrix = eye(3);
 K2 = K;
-K2(1,3) = ((K2(1,3) - 1) / 2) + 1;
-K2(2,3) = ((K2(2,3) - 1) / 2) + 1;
-K2(1,2) = ((K2(1,2) - 1) / 2) + 1;
+% K2(1,3) = ((K2(1,3) - 1) / 2) + 1;
+% K2(2,3) = ((K2(2,3) - 1) / 2) + 1;
+% K2(1,2) = ((K2(1,2) - 1) / 2) + 1;
 scaMatrix(1,1) = 1/2;
 scaMatrix(2,2) = 1/2;
 K2 = scaMatrix * K2;
-% K2(1,2) = K(1,2);
 figure;
 imshow(im1);
 title(Iname4);
@@ -122,7 +122,6 @@ for j = 1:numPositions
     y = p(2)/p(3);         
     plot(ceil(x),ceil(y),'ws');
 end
-hold off;
 
 
 
@@ -152,7 +151,6 @@ for j = 1:numPositions
     y = p(2)/p(3);            
     plot(ceil(x),ceil(y),'ws');
 end
-hold off;
 
 
 end
