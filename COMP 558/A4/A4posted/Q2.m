@@ -10,7 +10,7 @@ aspRat = K(2,2) / K(1,1);
 %Image shift part%
 %---------------------------%
 
-% Iname = 'first image changing K for shifting';
+% Iname = 'first image for shifting';
 % newMatrix = eye(3);
 % newMatrix(1,3) = 75;
 % K1 = newMatrix * K;
@@ -32,18 +32,14 @@ aspRat = K(2,2) / K(1,1);
 %     %  Draw in white square the projected point positions according to the fit model.        
 %     plot(ceil(x),ceil(y),'ws');
 % end
-% hold off;
 
 
 
 
-% Iname2 = 'first image changing R for shifting';
-% figure;
-% imshow(im1);
-% title(Iname2);
-% hold on 
+
 % rotMatrix = eye(3);
-% rotMatrix(1,3) = 0.0127;
+% % rotMatrix(1,3) = 0.0127;
+% rotMatrix(1,3) = 1/75;
 % R2 = rotMatrix * R;
 % %  Draw in green the keypoints locations that were hand selected.       
 % for j = 1:numPositions
@@ -57,18 +53,13 @@ aspRat = K(2,2) / K(1,1);
 %     x = p(1)/p(3);
 %     y = p(2)/p(3);         
 %     %  Draw in white square the projected point positions according to the fit model.        
-%     plot(ceil(x),ceil(y),'ws');
+%     plot(ceil(x),ceil(y),'rs');
 % end
 % hold off;
 
 
 
 
-% Iname3 = 'first image changing C for shifting';
-% figure;
-% imshow(im1);
-% title(Iname3);
-% hold on 
 % tranMatrix = eye(3);
 % tranMatrix(1,3) = -0.044;
 % tranMatrix(2,3) = -0.0137;
@@ -82,9 +73,8 @@ aspRat = K(2,2) / K(1,1);
 %     p = P3*[ XYZ(j,1) XYZ(j,2) XYZ(j,3)  1]';
 %     x = p(1)/p(3);
 %     y = p(2)/p(3);            
-%     plot(ceil(x),ceil(y),'ws');
+%     plot(ceil(x),ceil(y),'bs');
 % end
-% hold off;
 
 
 
@@ -96,14 +86,9 @@ aspRat = K(2,2) / K(1,1);
 
 %Changing K for expansion 
 
-Iname4 = 'first image changing K for scaling';
-
-
+Iname4 = 'first image for scaling';
 scaMatrix = eye(3);
 K2 = K;
-% K2(1,3) = ((K2(1,3) - 1) / 2) + 1;
-% K2(2,3) = ((K2(2,3) - 1) / 2) + 1;
-% K2(1,2) = ((K2(1,2) - 1) / 2) + 1;
 scaMatrix(1,1) = 1/2;
 scaMatrix(2,2) = 1/2;
 K2 = scaMatrix * K2;
@@ -129,11 +114,11 @@ end
 
 %Changing C for expansion%
 
-Iname5 = 'first image changing C for scaling';
-figure;
-imshow(im1);
-title(Iname5);
-hold on 
+% Iname5 = 'first image changing C for scaling';
+% figure;
+% imshow(im1);
+% title(Iname5);
+% hold on 
 
 scaTrans = eye(3);
 scaTrans(1,1) = 2;
@@ -149,8 +134,8 @@ for j = 1:numPositions
     p = P5*[ XYZ(j,1) XYZ(j,2) XYZ(j,3)  1]';
     x = p(1)/p(3);
     y = p(2)/p(3);            
-    plot(ceil(x),ceil(y),'ws');
+    plot(ceil(x),ceil(y),'rs');
 end
-
+hold off;
 
 end

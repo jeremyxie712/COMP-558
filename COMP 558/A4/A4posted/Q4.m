@@ -3,7 +3,7 @@ clc;
 close all;
 
 im1 = imread('c1.JPG');
-theta = deg2rad(10); %Here we set the degree, beware that trig commands take radians instead of degrees.
+theta = deg2rad(20); %Here we set the degree, beware that trig commands take radians instead of degrees.
 
 %Here we compute the mx and my which are useful when it comes to multiply
 %the focal length
